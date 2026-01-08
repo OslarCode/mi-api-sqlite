@@ -1,0 +1,12 @@
+{
+  "name": "mi-api-sqlite",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/http/server.mjs",
+  "scripts": {
+    "start": "node src/http/server.mjs"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  }
+}
