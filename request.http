@@ -1,0 +1,77 @@
+###
+# 1) GET /users
+# Recién arrancado el servidor.
+# Resultado esperado:
+# - 200 OK
+# - { ok: true, data: [] }
+
+GET http://localhost:3000/users
+Accept: application/json
+
+###
+# 2) POST /users
+# Crea un usuario nuevo.
+# Resultado esperado:
+# - 201 Created
+# - ok: true
+# - data.id debe existir (por ejemplo 1)
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "email": "usuario1@example.com",
+  "name": "Usuario Inicial"
+}
+
+###
+# 3) GET /users/:id
+# Recupera el usuario recién creado.
+# IMPORTANTE:
+# - Ajusta el ID si no es 1.
+# Resultado esperado:
+# - 200 OK
+# - email y name originales
+
+GET http://localhost:3000/users/1
+Accept: application/json
+
+###
+# 4) PUT /users/:id
+# Actualiza email y name del usuario.
+# Resultado esperado:
+# - 200 OK
+# - data.email y data.name actualizados
+
+PUT http://localhost:3000/users/1
+Content-Type: application/json
+
+{
+  "email": "usuario1_actualizado@example.com",
+  "name": "Usuario Actualizado"
+}
+
+###
+# 5) DELETE /users/:id
+# Borra el usuario usando transacción y log.
+# Resultado esperado:
+# - 200 OK
+# - data.deleted = true
+# - data.user contiene los datos del usuario borrado
+# - data.deleted_at existe
+
+DELETE http://localhost:3000/users/1
+Accept: application/json
+
+###
+# 6) GET /users/:id (usuario ya borrado)
+# Intenta recuperar un usuario eliminado.
+# Resultado esperado:
+# - 404 Not Found
+# - ok: false
+# - error: "Usuario no encontrado."
+
+GET http://localhost:3000/users/1
+Accept: application/json
+
+
